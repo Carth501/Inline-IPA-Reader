@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Inline IPA",
+  "version": "0.1",
+
+  "description": "Highlight text surrounded by slashes and select Inline IPA to read the text out loud.",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/beastify",
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png"
+  },
+
+  "background":{
+    "scripts": ["menu/background.js"]
+  },
+
+  "permissions": [
+    "activeTab",
+    "contextMenus"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/48.png",
+    "default_title": "Inline IPA"
+  }
+}
