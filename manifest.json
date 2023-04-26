@@ -16,7 +16,8 @@
 
   "permissions": [
     "activeTab",
-    "contextMenus"
+    "contextMenus",
+    "webRequest"
   ],
 
   "browser_action": {

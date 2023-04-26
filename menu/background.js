@@ -19,18 +19,25 @@ browser.contextMenus.create(
 browser.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
     case "log-selection":
-      request(info.selectionText);
+      attemptReading(info.selectionText);
       break;
     // …
   }
 });
 
-function request(text) {
-  const regex = /\/[pbtdʈɖcɟkɡqɢʔmɱnɳɲŋɴʙrʀⱱɾɽɸβfvθðszʃʒʂʐçʝxɣχʁħʕhɦɬɮʋɹɻjɰlɭʎʟʘǀǃǂǁɓɗʄɠʛʼiyɨʉɯuɪʏʊeøɘɵɤoəɛœɜɞʌɔæɐaɶɑɒʍwɥʜʢʡɕʑɺɧ͜͡ˈˌːˑ̆|‖.‿̥̬ʰ̹̜̟̠̩̯̈̽˞̤̰̼ʷʲˠˤ̴̝̞̘̙̪̺̻̃ⁿˡ̋̚˥̌˩́˦̂̄˧᷄̀˨᷅̏᷈]+\//;
+function attemptReading(text) {
+  const regex = /[pbtdʈɖcɟkɡqɢʔmɱnɳɲŋɴʙrʀⱱɾɽɸβfvθðszʃʒʂʐçʝxɣχʁħʕhɦɬɮʋɹɻjɰlɭʎʟʘǀǃǂǁɓɗʄɠʛʼiyɨʉɯuɪʏʊeøɘɵɤoəɛœɜɞʌɔæɐaɶɑɒʍwɥʜʢʡɕʑɺɧ͜͡ˈˌːˑ̆|‖.‿̥̬ʰ̹̜̟̠̩̯̈̽˞̤̰̼ʷʲˠˤ̴̝̞̘̙̪̺̻̃ⁿˡ̋̚˥̌˩́˦̂̄˧᷄̀˨᷅̏᷈]+/;
   if(regex.test(text)){
-    console.log(text.match(regex) + ' is accepted');
+    makeRequest(text);
   }
   else {
     console.log('test failed ' + text);
   }
+}
+
+function makeRequest(text) {
+  const Http = new XMLHttpRequest();
+  const url='https://iawll6of90.execute-api.us-east-1.amazonaws.com';
+  Http.open('POST', url);
+  Http.send({"text":text,"voice":"Salli"});
 }
